@@ -57,21 +57,100 @@ class Summary extends React.Component {
 }
 
 class AdmissionFeeCalculator extends React.Component {
-  private detail: DetailProps = {
-    classification:{
-      name: "所得割課税額397,000円以上",
-      description: "",
-      unitPrice: 104000,
-      numOfPeople: 0,
-      totalPrice: 0
-    }
-  };
+  private details: DetailProps[] = [
+    {
+      classification:{
+        name: "年収1,130万円以上",
+        description: "",
+        unitPrice: 104000,
+        numOfPeople: 0,
+        totalPrice: 0
+      }
+    },
+    {
+      classification:{
+        name: "年収1,130万円未満",
+        description: "",
+        unitPrice: 80000,
+        numOfPeople: 0,
+        totalPrice: 0
+      }
+    },
+    {
+      classification:{
+        name: "年収930万円未満",
+        description: "",
+        unitPrice: 61000,
+        numOfPeople: 0,
+        totalPrice: 0
+      }
+    },
+    {
+      classification:{
+        name: "年収640万円未満",
+        description: "",
+        unitPrice: 44500,
+        numOfPeople: 0,
+        totalPrice: 0
+      }
+    },
+    {
+      classification:{
+        name: "年収470万円未満",
+        description: "",
+        unitPrice: 30000,
+        numOfPeople: 0,
+        totalPrice: 0
+      }
+    },
+    {
+      classification:{
+        name: "年収360万円未満",
+        description: "",
+        unitPrice: 30000,
+        numOfPeople: 0,
+        totalPrice: 0
+      }
+    },
+    {
+      classification:{
+        name: "年収330万円未満",
+        description: "",
+        unitPrice: 19500,
+        numOfPeople: 0,
+        totalPrice: 0
+      }
+    },
+    {
+      classification:{
+        name: "年収260万円未満",
+        description: "",
+        unitPrice: 9000,
+        numOfPeople: 0,
+        totalPrice: 0
+      }
+    },
+    {
+      classification:{
+        name: "生活保護世帯",
+        description: "",
+        unitPrice: 0,
+        numOfPeople: 0,
+        totalPrice: 0
+      }
+    },
+  ];
 
   //親コンポーネントにあたるAdmissionFeeCalculatorでは、Detailコンポーネントにプロパティを渡す必要があります。
   render() {
+    const detailsJsx = this.details.map((fc, idx) => {
+      return (
+        <Detail key ={idx.toString()} classification={fc.classification} />
+      );
+    });
     return (
       <>
-        <Detail classification={this.detail.classification}/>
+        {detailsJsx}
         <Summary />
       </>
     );
